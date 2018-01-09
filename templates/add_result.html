@@ -6,7 +6,7 @@
  <body>
    <div id="container">
      <div class="pagetitle">
-       <h1>Form submitted</h1>
+       <h1>Addition request submitted</h1>
      </div>
      <div id="main">
        <p>Thanks for your calculation!</p>
@@ -14,6 +14,13 @@
        <p>
           <strong>Result</strong>: {{sum}} <br>
        </p>
+       <!-- This will add a "Go Back" button so a user can make another query -->
+       <button onclick="goBack()">Go Back</button>
+       <script>
+        function goBack() {
+            window.history.back();
+        }
+        </script>
      </div>
    </div>
  </body>

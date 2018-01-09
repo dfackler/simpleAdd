@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, abort, session
+import operator
 
 # create instance of Flask class 
 # __name__ is special python variable related to name of app
@@ -10,10 +11,20 @@ def simple_add():
 
 @app.route('/result', methods=['POST'])
 def add_result():
-    sum = int(request.form['num1']) + int(request.form['num2'])
-    if(sum > 9223372036854775807 or
-        sum < -9223372036854775808-1 ):
-        abort(400)
+    ops = {'>': operator.gt,
+           '<': operator.lt,
+           '>=': operator.ge,
+           '<=': operator.le,
+           '=': operator.eq,
+           '+': operator.add,
+           '-': operator.sub,
+           '*': operator.mul,
+           'X': operator.mul,
+           '/': operator.div,
+           '%': operator.div,
+           '^': operator.pow,
+           '**': operator.pow}
+    result = ops[request.form['operation']](int(request.form['num1']), int(request.form['num2']))
     return render_template(
         'add_result.html',
-        sum=sum)
+        sum=result)

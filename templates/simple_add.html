@@ -6,7 +6,7 @@
   <body>
     <div id="container">
       <div class="pagetitle">
-        <h1>Submit a form</h1>
+        <h1>Welcome! Please Enter Two Numbers to Be Added.</h1>
       </div>
       <div id="main">
         <form method="post" action="{{ url_for('add_result') }}">
@@ -14,6 +14,9 @@
           <input type="text" name="num1"><br />
           <label for="num2">Number 2:</label>
           <input type="text" name="num2"><br />
+          <label for="operation">Operation:</label>
+          <input type="text" name="operation"><br />
+
           <input type="submit">
         </form>
       </div>
